@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.demo.controller.FineController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="183.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="280.0" prefWidth="347.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="finesTable" prefHeight="279.0" prefWidth="347.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="fio" prefWidth="75.0" text="fio" />
+                            <TableColumn fx:id="car" prefWidth="75.0" text="car info" />
+                              <TableColumn fx:id="phone" prefWidth="75.0" text="phone" />
+                              <TableColumn fx:id="region" prefWidth="75.0" text="region" />
+                              <TableColumn fx:id="speed" prefWidth="75.0" text="speed" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="347.0" prefHeight="279.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField fx:id="nameField" layoutX="91.0" layoutY="35.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="35.0" />
+                        <TextField fx:id="surnameField" layoutX="91.0" layoutY="70.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="70.0" />
+                        <TextField fx:id="fathernameField" layoutX="91.0" layoutY="106.0" />
+                        <TextField fx:id="governmentNumberField" layoutX="91.0" layoutY="141.0" />
+                        <TextField fx:id="userCnumField" layoutX="91.0" layoutY="177.0" />
+                        <Button fx:id="btnSearch" layoutX="50.0" layoutY="225.0" mnemonicParsing="false" onAction="#searchFines" prefHeight="25.0" prefWidth="155.0" text="Поиск" />
+                        <Label layoutX="53.0" layoutY="39.0" text="Имя" />
+                        <Label layoutX="28.0" layoutY="74.0" text="Фамилия" />
+                        <Label layoutX="24.0" layoutY="110.0" text="Отчечство" />
+                        <Label layoutX="23.0" layoutY="145.0" text="Гос. номер" />
+                        <Label layoutX="69.0" layoutY="181.0" text="УИ" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <Pane prefHeight="121.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

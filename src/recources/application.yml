@@ -1,0 +1,5 @@
+datasource:
+  demo:
+    jdbc-url: jdbc:mysql://localhost:3306/fines
+    username: artemm
+    password: qwe
