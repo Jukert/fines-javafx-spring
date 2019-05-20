@@ -16,7 +16,8 @@ public class CarMapper implements RowMapper<Car> {
         car.setMark(resultSet.getString("C.MARK"));
         car.setMaxSpeed(resultSet.getString("C.MAX_SPEED"));
         car.setWeight(resultSet.getInt("C.WEIGHT"));
-        car.setUser(new UserMapper().mapRow(resultSet, i));
+        if (resultSet.getString("U.CNUM") != null)
+            car.setUser(new UserMapper().mapRow(resultSet, i));
         return car;
     }
 

@@ -1,28 +1,34 @@
 package by.bsuir.demo.controller;
 
+import by.bsuir.demo.common.Car;
 import by.bsuir.demo.common.Fine;
 import by.bsuir.demo.common.FineModel;
+import by.bsuir.demo.common.User;
+import by.bsuir.demo.dao.CarDao;
 import by.bsuir.demo.dao.FineDao;
+import by.bsuir.demo.dao.UserDao;
 import by.bsuir.demo.filter.FineFilter;
+import by.bsuir.demo.util.FxElementsUtil;
 import by.bsuir.demo.util.StringUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FineController {
 
-    @Autowired
+    //@Autowired
     private FineDao fineDao;
+
+    private CarDao carDao;
+
+    private UserDao userDao;
 
     @FXML
     private TableView<FineModel> finesTable;
@@ -45,33 +51,101 @@ public class FineController {
     @FXML
     private Button btnSearch;
 
+    @FXML
+    private TextField markField;
+
+    @FXML
+    private TextField colorField;
+
+    @FXML
+    private TextField numberField;
+
+    @FXML
+    private ComboBox<String> userNumber;
+
+    @FXML
+    private TextField weightNumber;
+
+    @FXML
+    private TextField speedNumber;
+
+    @FXML
+    private Button btnSaveCar;
+
+    @FXML
+    private Button btnClear;
+
+    @FXML
+    private TableView<Car> carsTable;
+
     private ObservableList<FineModel> fineObservableList = FXCollections.observableArrayList();
+
+    public FineController(FineDao fineDao, CarDao carDao, UserDao userDao) {
+        this.fineDao = fineDao;
+        this.carDao = carDao;
+        this.userDao = userDao;
+    }
 
     @FXML
     void initialize() {
-        List<Fine> fines = new ArrayList<>();
 
-        TableColumn<FineModel, String> fioColumn = new TableColumn<>("FIO");
-        fioColumn.setCellValueFactory(new PropertyValueFactory<>("fio"));
+        finesTable.getColumns().setAll(FxElementsUtil.getColumns(fineNameColumns));
 
-        TableColumn<FineModel, String> carInfoColumn = new TableColumn<>("About car");
-        carInfoColumn.setCellValueFactory(new PropertyValueFactory<>("car"));
+        carsTable.getColumns().setAll(FxElementsUtil.getColumns(carNameColumns));
 
-        TableColumn<FineModel, String> phoneNumberColumn = new TableColumn<>("Phone");
-        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        loadFineData();
 
-        TableColumn<FineModel, String> locationColumn = new TableColumn<>("Region");
-        locationColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        loadCarsData();
 
-        TableColumn<FineModel, String> speedColumn = new TableColumn<>("Max speed");
-        speedColumn.setCellValueFactory(new PropertyValueFactory<>("speed"));
+        List<String> fio = new ArrayList<>();
+        for (User u: userDao.findAll()) {
+            fio.add(String.format("%s, %s %s %s", u.getCnum(), u.getSurname(), u.getName(), u.getFathername()));
+        }
+        userNumber.setItems(FXCollections.observableArrayList(fio));
 
-        finesTable.getColumns().setAll(fioColumn, carInfoColumn, phoneNumberColumn, locationColumn, speedColumn);
-        finesTable.setItems(fineObservableList);
+        btnClear.setOnAction(event -> clear());
+    }
+
+    private void loadCarsData() {
+        carsTable.setItems(FXCollections.observableArrayList(carDao.findAll()));
+    }
+
+    @FXML
+    void saveCarAct(ActionEvent event) {
+        Car car = new Car();
+        car.setWeight(Integer.valueOf(weightNumber.getText()));
+        car.setUser(new User(
+                userNumber.getSelectionModel().getSelectedItem().split(",")[0]
+        ));
+        car.setMaxSpeed(speedNumber.getText());
+        car.setMark(markField.getText());
+        car.setGovernmentNumber(numberField.getText());
+        car.setColor(colorField.getText());
+
+        carDao.save(car);
+
+        loadCarsData();
     }
 
     @FXML
     void searchFines(ActionEvent event) {
+       loadFineData();
+    }
+
+
+    private void clear() {
+        markField.setText("");
+        colorField.setText("");
+        numberField.setText("");
+        weightNumber.setText("");
+        speedNumber.setText("");
+    }
+
+    public void setFineDao(FineDao fineDao) {
+        this.fineDao = fineDao;
+    }
+
+    private void loadFineData() {
         finesTable.getItems().clear();
         FineFilter filter = new FineFilter();
         filter.setCnum(StringUtil.trim(userCnumField.getText()));
@@ -94,7 +168,22 @@ public class FineController {
         }
 
         finesTable.setItems(fineObservableList);
-
-        //finesTable.setItems(FXCollections.observableArrayList(fineDao.findAll(filter)));
     }
+
+    private Map<String, String> fineNameColumns = new HashMap<String, String>() {{
+        put("fio", "FIO");
+        put("car", "About car");
+        put("phone", "Phone");
+        put("region", "Region");
+        put("speed", "Max speed");
+    }};
+
+    private Map<String, String> carNameColumns = new HashMap<String, String>() {{
+        put("mark", "Mark");
+        put("color", "Color");
+        put("governmentNumber", "Government number");
+        put("weight", "Weight");
+        put("maxSpeed", "Max speed");
+    }};
+
 }

@@ -1,8 +1,12 @@
 package by.bsuir.demo.configuration;
 
+import by.bsuir.demo.dao.CarDao;
 import by.bsuir.demo.dao.FineDao;
+import by.bsuir.demo.dao.UserDao;
+import by.bsuir.demo.dao.impl.CarDaoImpl;
 import by.bsuir.demo.dao.impl.FineDaoImpl;
 import by.bsuir.demo.dao.impl.JdbcDaoTemplate;
+import by.bsuir.demo.dao.impl.UserDaoImpl;
 import by.iba.sql.database.impl.MySQLBase;
 import by.iba.sql.factory.SqlBuilderFactory;
 import by.iba.sql.factory.impl.SqlBuilderFactoryImpl;
@@ -37,4 +41,14 @@ public class ApplicationConfiguration {
         return new JdbcDaoTemplate(dataSource());
     }
 
+
+    @Bean
+    public CarDao carDao() {
+        return new CarDaoImpl(jdbcDaoTemplate());
+    }
+
+    @Bean
+    public UserDao userDao() {
+        return new UserDaoImpl(jdbcDaoTemplate());
+    }
 }

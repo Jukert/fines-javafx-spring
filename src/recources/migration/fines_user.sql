@@ -1,0 +1,1 @@
+INSERT INTO fines.user (CNUM, SURNAME, UNAME, FATHERNAME, ADDRESS, PHONE) VALUES ('123', 'Makovetsky', 'Artem', 'Sergeevich', 'per Korgenevskogo 28 ', '375445943997');

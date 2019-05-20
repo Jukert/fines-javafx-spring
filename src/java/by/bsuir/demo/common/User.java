@@ -14,6 +14,13 @@ public class User {
 
     private String phone;
 
+    public User() {
+    }
+
+    public User(String cnum) {
+        this.cnum = cnum;
+    }
+
     public String getCnum() {
         return cnum;
     }

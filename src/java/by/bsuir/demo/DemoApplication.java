@@ -1,9 +1,6 @@
 package by.bsuir.demo;
 
 import by.bsuir.demo.common.View;
-import by.bsuir.demo.configuration.ControllersConfiguration;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +21,10 @@ public class DemoApplication extends AbstractJavaFxApplicationSupport {
         primaryStage.setTitle("Fines");
         primaryStage.setScene(new Scene(view.getView()));
         primaryStage.setResizable(true);
+        primaryStage.setMaxHeight(679);
+        primaryStage.setMaxWidth(950);
+        primaryStage.setMinHeight(679);
+        primaryStage.setMinWidth(950);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }

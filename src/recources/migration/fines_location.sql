@@ -1,0 +1,1 @@
+INSERT INTO fines.location (ID, REGION) VALUES (1, 'Minsk');
