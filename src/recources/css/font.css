@@ -1,0 +1,8 @@
+@font-face {
+    font-family: CustomF;
+    src: url('../fonts/16852.otf');
+}
+
+.lable-header {
+    -fx-font-family: 'CustomF';
+}

@@ -8,17 +8,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="679.0" maxWidth="895.0" minHeight="400.0" minWidth="708.0" prefHeight="679.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="679.0" maxWidth="895.0" minHeight="679.0" minWidth="895.0" prefHeight="679.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="679.0" prefWidth="895.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Поиск">
                <content>
-                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="898.0">
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="889.0">
                      <center>
                         <AnchorPane prefHeight="440.0" prefWidth="837.0" BorderPane.alignment="CENTER">
                            <children>
@@ -54,14 +55,17 @@
                         </AnchorPane>
                      </center>
                      <top>
-                        <AnchorPane prefHeight="128.0" prefWidth="708.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="129.0" prefWidth="885.0" BorderPane.alignment="CENTER">
                            <children>
-                              <BorderPane prefHeight="149.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane prefHeight="129.0" prefWidth="935.0" style="-fx-background-color: rgb(206, 205, 200); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-46.0" AnchorPane.topAnchor="0.0">
                                  <center>
-                                    <Label text="FINES" BorderPane.alignment="CENTER">
+                                    <Label style="-fx-font-family: 'Shumi';" styleClass="lable-header" text="FINES" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                                        <font>
-                                          <Font name="SansSerif Regular" size="65.0" />
+                                          <Font name="SansSerif Regular" size="77.0" />
                                        </font>
+                                       <effect>
+                                          <Bloom />
+                                       </effect>
                                     </Label>
                                  </center>
                               </BorderPane>
@@ -103,6 +107,11 @@
                      </center>
                   </BorderPane>
                </content>
+            </Tab>
+            <Tab text="Untitled Tab">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
             </Tab>
         </tabs>
       </TabPane>

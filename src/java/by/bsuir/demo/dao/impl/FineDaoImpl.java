@@ -40,7 +40,8 @@ public class FineDaoImpl implements FineDao {
                             "    F.CNUM, " +
                             "    F.LOCATION_ID, "  +
                             "    F.BORDER_SPEED_ID, " +
-                            "    F.CAR_ID, " +
+                            "    F.CAR_ID," +
+                            "    F.SPEED, " +
                             "    U.CNUM, " +
                             "    U.SURNAME, " +
                             "    U.UNAME, " +

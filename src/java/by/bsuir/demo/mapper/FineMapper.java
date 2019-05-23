@@ -16,6 +16,7 @@ public class FineMapper implements RowMapper<Fine> {
         fine.setCar(new CarMapper().mapRow(resultSet, i));
         fine.setLocation(new LocationMapper().mapRow(resultSet, i));
         fine.setUser(new UserMapper().mapRow(resultSet, i));
+        fine.setSpeed(resultSet.getInt("SPEED"));
 
         return fine;
     }

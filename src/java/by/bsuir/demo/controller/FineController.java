@@ -162,7 +162,7 @@ public class FineController {
                     String.format("%s %s color, weight %s, maxSpeed %s", fine.getCar().getMark(), fine.getCar().getColor(), fine.getCar().getWeight(), fine.getCar().getMaxSpeed()),
                     fine.getUser().getPhone(),
                     fine.getLocation().getRegion(),
-                    String.valueOf(fine.getBorderSpeed().getMax())
+                    String.valueOf(fine.getSpeed())
             ));
 
         }

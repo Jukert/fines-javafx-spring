@@ -12,6 +12,8 @@ public class Fine {
 
     private Car car;
 
+    private int speed;
+
 
     public int getId() {
         return id;
@@ -51,5 +53,13 @@ public class Fine {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }
